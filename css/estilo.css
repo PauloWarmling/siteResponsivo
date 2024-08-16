@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+
+.container {
+  width: 1250px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 250px;
+  background: #ffffff;
+}
+header img {
+  width: 100px;
+  height: auto;
+}
+header ul.menu {
+  display: flex;
+  gap: 15px;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+header ul.menu li.menu-item {
+  color: #3498db;
+  font-size: 20px;
+  list-style: none;
+}
+header ul.menu li.menu-item.current {
+  color: #000;
+  font-weight: 800;
+}
+header ul.menu li.menu-item.profile {
+  background: rgb(226, 215, 179);
+  padding: 5px 10px;
+}
+header ul.menu li.menu-item:hover {
+  color: #2ecc71;
+  font-weight: 800;
+}
+
+main {
+  background: rgb(206, 201, 201);
+}
+main h1 {
+  font-size: 30px;
+  color: #3498db;
+}
+main p {
+  color: #2ecc71;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+main .container .card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+main .container .card-wrapper .card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: calc(33.3333333333% - 60px);
+}
+main .container .card-wrapper .card img {
+  width: 100%;
+  height: auto;
+}
+main .container .card-wrapper .card .details {
+  padding: 15px 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*# sourceMappingURL=estilo.css.map */

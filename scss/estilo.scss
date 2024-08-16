@@ -1,0 +1,102 @@
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$font-stack: "Poppins", sans-serif;
+$base-font-size: 16px;
+$main-background: rgb(206, 201, 201);
+$white: #ffffff;
+$black: #000;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-stack;
+    font-size: $base-font-size;
+}
+
+.container {
+    width: 1250px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 250px;
+    background: $white;
+    img {
+        width: 100px;
+        height: auto;
+    }
+    ul.menu {
+        display: flex;
+        gap: 15px;
+        align-content: center;
+        align-items: center;
+        justify-content: space-between;
+        li.menu-item {
+            color: $primary-color;
+            font-size: 20px;
+            list-style: none;
+            &.current {
+                color: $black;
+                font-weight: 800;
+            }
+            &.profile {
+                background: rgb(226, 215, 179);
+                padding: 5px 10px;
+            }
+            &:hover {
+                color: $secondary-color;
+                font-weight: 800;
+            }
+        }
+    }
+ }
+
+ main {
+    background: $main-background;
+    h1 {
+        font-size: 30px;
+        color: $primary-color;
+    }
+    
+    p {
+        color: $secondary-color;
+        font-size: $base-font-size;
+        font-family: $font-stack;
+    }
+
+    .container {
+        .card-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+    
+            .card {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+                width: calc((100% / 3) - (30px * 2));
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+                .details {
+                    padding: 15px 20px;
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                
+            }
+        }
+    }
+}
+
+
+
+
