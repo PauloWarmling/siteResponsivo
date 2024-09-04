@@ -1,3 +1,22 @@
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.43);
+  z-index: -1;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 998;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,15 +29,22 @@ body {
 }
 
 .container {
+  max-width: 100%;
   width: 1250px;
   margin: 0 auto;
+}
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 250px;
+  height: 150px;
   background: #ffffff;
 }
 header img {
@@ -32,10 +58,16 @@ header ul.menu {
   align-items: center;
   justify-content: space-between;
 }
+@media (max-width: 768px) {
+  header ul.menu {
+    display: none;
+  }
+}
 header ul.menu li.menu-item {
-  color: #3498db;
+  color: #8D8D99;
   font-size: 20px;
   list-style: none;
+  cursor: pointer;
 }
 header ul.menu li.menu-item.current {
   color: #000;
@@ -46,21 +78,135 @@ header ul.menu li.menu-item.profile {
   padding: 5px 10px;
 }
 header ul.menu li.menu-item:hover {
-  color: #2ecc71;
+  color: rgb(198, 198, 198);
   font-weight: 800;
+}
+header #mobile-icon {
+  display: none;
+  justify-content: right;
+  position: fixed;
+  padding: 13px 6px;
+  right: 10px;
+  top: 40px;
+  z-index: -1;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.43);
+}
+@media (max-width: 768px) {
+  header #mobile-icon {
+    display: flex;
+  }
+}
+header #mobile-menu {
+  display: none;
+  background: #8D8D99;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 85vw;
+  height: 100vh;
+  transition: all 0.3s;
+  overflow-y: scroll;
+  z-index: 9999;
+  max-width: 380px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.43);
+  margin-top: 20px;
+}
+@media (max-width: 768px) {
+  header #mobile-menu {
+    display: block;
+  }
+}
+header #mobile-menu.active {
+  right: 0;
+}
+header #mobile-menu .container {
+  padding: 40px 30px 20px 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #353535;
+}
+header #mobile-menu .container .close {
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+header #mobile-menu .container .close a {
+  cursor: pointer;
+}
+header #mobile-menu .container .logo {
+  display: flex;
+  justify-content: center;
+  padding: 5px 20px;
+}
+header #mobile-menu .container ul.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+header #mobile-menu .container ul.menu li.menu-item {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+header #mobile-menu .container ul.menu li.menu-item a {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #ffffff;
+  transition: all 0.3s;
+  position: relative;
+}
+header #mobile-menu .container ul.menu li.menu-item a::after {
+  content: "";
+  display: block;
+  width: 0%;
+  transition: all 0.3s;
+  background: #ffffff;
+  height: 2px;
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+header #mobile-menu .container ul.menu li.menu-item a:hover::after {
+  width: 100%;
+}
+header #mobile-menu .container ul.menu li.menu-item.current-menu-item a {
+  font-weight: 700;
+}
+header #mobile-menu .container ul.menu li.menu-item.current-menu-item a::after {
+  width: 100%;
+}
+header #mobile-menu .container ul.menu li.menu-item.menu-item-has-children {
+  position: relative;
+}
+header #mobile-menu .container ul.menu li.menu-item.menu-item-has-children ul.sub-menu {
+  padding-top: 14px;
+  background: #ffffff;
+}
+header #mobile-menu .container ul.menu li.menu-item.menu-item-has-children ul.sub-menu > li.menu-item a {
+  color: #8D8D99;
 }
 
 main {
-  background: rgb(206, 201, 201);
+  width: 100%;
+  background: #F5F5F5;
+  padding: 100px 0;
 }
 main h1 {
   font-size: 30px;
-  color: #3498db;
+  color: #000;
 }
 main p {
-  color: #2ecc71;
+  color: rgb(198, 198, 198);
   font-size: 16px;
   font-family: "Poppins", sans-serif;
+  margin-bottom: 20px;
 }
 main .container .card-wrapper {
   display: flex;
@@ -72,6 +218,16 @@ main .container .card-wrapper .card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
   width: calc(33.3333333333% - 60px);
 }
+@media (max-width: 768px) {
+  main .container .card-wrapper .card {
+    width: calc(50% - 30px);
+  }
+}
+@media (max-width: 480px) {
+  main .container .card-wrapper .card {
+    width: 100%;
+  }
+}
 main .container .card-wrapper .card img {
   width: 100%;
   height: auto;
@@ -80,6 +236,23 @@ main .container .card-wrapper .card .details {
   padding: 15px 20px;
   display: flex;
   flex-wrap: wrap;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+footer .dev {
+  padding: 20px;
+}
+footer .dev a {
+  text-decoration: none;
+}
+footer .dev a span {
+  color: #8D8D99;
+}
+footer .dev a span:hover {
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=estilo.css.map */
